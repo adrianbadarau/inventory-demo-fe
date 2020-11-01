@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {KtPair, SalesOrder} from './models';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {Observable} from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -39,13 +40,16 @@ export class CartService {
         }
     }
 
-    checkout() {
+    clearCart(): KtPair[] {
+        return this.items = [];
+    }
+
+    checkout(): Observable<string> {
         const order = new SalesOrder(this.items)
-        this.http.post(CartService.endpoint, order).subscribe(resp => {
-            if (resp === 'SUCCESS') {
-                this.items = [];
-                console.log( resp, this.items)
-            }
-        })
+        return this.http.post<string>(CartService.endpoint, order)
+    }
+
+    checkStockForItem(productName: string): Observable<number> {
+        return this.http.get<number>(encodeURI(`${CartService.endpoint}/stock/${productName}`))
     }
 }

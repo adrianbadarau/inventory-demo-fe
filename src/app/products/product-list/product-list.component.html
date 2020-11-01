@@ -24,11 +24,14 @@
                                     Required items
                                 </th>
                                 <th>
+                                    Stock
+                                </th>
+                                <th>
                                     Options
                                 </th>
                                 </thead>
                                 <tbody>
-                                <tr *ngFor="let product of products; let i = index">
+                                <tr *ngFor="let product of products ; let i = index">
                                     <td>
                                         {{i + 1}}
                                     </td>
@@ -38,6 +41,9 @@
                                     <td>
                                         <p *ngFor="let item of product.contain_articles">{{findItemName(item.art_id)}}
                                             - {{item.amount_of}}</p>
+                                    </td>
+                                    <td>
+                                        {{product.stock}}
                                     </td>
                                     <td class="text-primary">
                                         <button mat-raised-button (click)="addToCart(product)"

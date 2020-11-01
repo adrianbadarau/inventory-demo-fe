@@ -23,7 +23,12 @@ export class ProductListComponent implements OnInit {
     ngOnInit(): void {
         this.service.getAll().subscribe((items) => {
             console.log(items)
-            this.products = items
+            items.forEach(value => {
+                this.cartService.checkStockForItem(value.name).subscribe(stock => {
+                    value.stock = stock
+                    this.products.push(value)
+                })
+            })
         })
         this.inventoryService.getAll().subscribe(value =>
             this.inventoryItems = value
@@ -48,5 +53,9 @@ export class ProductListComponent implements OnInit {
 
     findItemName(artId: string): string {
         return this.inventoryItems.find(value => value.art_id === artId).name
+    }
+
+    getStock(product: Product) {
+        return this.cartService.checkStockForItem(product.name)
     }
 }

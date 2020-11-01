@@ -170,6 +170,10 @@ export class AdminLayoutComponent implements OnInit {
     }
 
     checkout() {
-        this.cartService.checkout()
+        this.cartService.checkout().subscribe(resp => {
+            if (resp === 'SUCCESS') {
+                this.cartItems = this.cartService.clearCart()
+            }
+        })
     }
 }

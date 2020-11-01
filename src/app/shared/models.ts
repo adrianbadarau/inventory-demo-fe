@@ -6,6 +6,7 @@ export interface ProductItem {
 export interface Product {
     name: string,
     contain_articles: ProductItem[]
+    stock?: number,
 }
 
 export class SalesOrder {
