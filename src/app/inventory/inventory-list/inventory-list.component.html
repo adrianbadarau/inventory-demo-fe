@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Simple Table</h4>
+                        <p class="card-category"> Click here to create a new item
+                            <button mat-raised-button [routerLink]="['./manage']"
+                                    class="btn btn-sm btn-success pull-right"><i class="fa fa-plus-square"></i></button>
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Country
+                                </th>
+                                <th>
+                                    City
+                                </th>
+                                <th>
+                                    Salary
+                                </th>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        Dakota Rice
+                                    </td>
+                                    <td>
+                                        Niger
+                                    </td>
+                                    <td>
+                                        Oud-Turnhout
+                                    </td>
+                                    <td class="text-primary">
+                                        <button mat-raised-button [routerLink]="['./manage']" [queryParams]="{id:3}"
+                                                type="submit" class="btn btn-sm btn-primary"><span
+                                                class="material-icons">create</span></button>
+                                        <button mat-raised-button type="submit" (click)="deleteItem(3)" class="btn btn-sm btn-danger"><span
+                                                class="material-icons">delete_sweep</span></button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
