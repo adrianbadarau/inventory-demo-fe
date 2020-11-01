@@ -21,34 +21,30 @@
                                     Name
                                 </th>
                                 <th>
-                                    Country
+                                    Stock
                                 </th>
                                 <th>
-                                    City
-                                </th>
-                                <th>
-                                    Salary
+                                    Options
                                 </th>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                <tr *ngFor="let item of items">
                                     <td>
-                                        1
+                                        {{item.art_id}}
                                     </td>
                                     <td>
-                                        Dakota Rice
+                                        {{item.name}}
                                     </td>
                                     <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Oud-Turnhout
+                                        {{item.stock}}
                                     </td>
                                     <td class="text-primary">
-                                        <button mat-raised-button [routerLink]="['./manage']" [queryParams]="{id:3}"
+                                        <button mat-raised-button [routerLink]="['./manage']"
+                                                [queryParams]="{id:item.art_id}"
                                                 type="submit" class="btn btn-sm btn-primary"><span
                                                 class="material-icons">create</span></button>
-                                        <button mat-raised-button type="submit" (click)="deleteItem(3)" class="btn btn-sm btn-danger"><span
+                                        <button mat-raised-button type="submit" (click)="deleteItem(item.art_id)"
+                                                class="btn btn-sm btn-danger"><span
                                                 class="material-icons">delete_sweep</span></button>
                                     </td>
                                 </tr>

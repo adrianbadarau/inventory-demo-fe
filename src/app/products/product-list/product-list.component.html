@@ -30,18 +30,20 @@
                                 <tbody>
                                 <tr *ngFor="let product of products; let i = index">
                                     <td>
-                                        {{i+1}}
+                                        {{i + 1}}
                                     </td>
                                     <td>
                                         {{product.name}}
                                     </td>
                                     <td>
-                                        <p *ngFor="let item of product.contain_articles">{{item.art_id}} - {{item.amount_of}}</p>
+                                        <p *ngFor="let item of product.contain_articles">{{findItemName(item.art_id)}}
+                                            - {{item.amount_of}}</p>
                                     </td>
                                     <td class="text-primary">
                                         <button mat-raised-button (click)="addToCart(product)"
                                                 type="submit" class="btn btn-sm btn-primary"><span
-                                                class="material-icons">shopping_basket</span> Add to cart</button>
+                                                class="material-icons">shopping_basket</span> Add to cart
+                                        </button>
                                     </td>
                                 </tr>
                                 </tbody>

@@ -30,3 +30,15 @@ export class KtPair implements IKtPair {
         this.second = second
     }
 }
+
+export class InventoryItem {
+    art_id: string;
+    name: string;
+    stock: number;
+
+    constructor(art_id: string, name: string, stock: number) {
+        this.art_id = art_id;
+        this.name = name;
+        this.stock = stock;
+    }
+}
